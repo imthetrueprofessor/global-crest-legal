@@ -742,52 +742,6 @@ textarea {
     color: var(--gold-dark);
 }
 
-.footer-social {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-}
-
-.footer-social a {
-    display: grid;
-    width: 36px;
-    height: 36px;
-    place-items: center;
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-    color: var(--ink);
-    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
-}
-
-.footer-social a:hover,
-.footer-social a:focus-visible {
-    border-color: var(--ink);
-    background: var(--ink);
-    color: var(--gold);
-}
-
-.footer-social svg {
-    width: 17px;
-    height: 17px;
-    fill: none;
-    stroke: currentColor;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1.7;
-}
-
-.footer-social a[aria-label="Facebook"] svg {
-    width: 15px;
-    height: 15px;
-    fill: currentColor;
-    stroke: none;
-}
-
-.footer-social .icon-fill {
-    fill: currentColor;
-    stroke: none;
-}
-
 @media (max-width: 800px) {
     .nav-inner {
         min-height: 76px;
