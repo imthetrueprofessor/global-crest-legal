@@ -1,11 +1,14 @@
 :root {
     color-scheme: light;
-    --paper: #FAF9F6;
-    --surface: #fffefa;
-    --ink: #202a31;
-    --muted: #4b5356;
-    --accent: #29474b;
-    --line: #d2d1c9;
+    --paper: #f8f9fa;
+    --surface: #ffffff;
+    --ink: #1d3557;
+    --muted: #46566b;
+    --accent: #1d3557;
+    --gold: #c5a059;
+    --gold-dark: #79571f;
+    --gold-soft: #e6dcc5;
+    --line: #d8dce2;
     --serif: "Source Serif 4", Georgia, serif;
     --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -110,7 +113,10 @@ p {
 }
 
 .brand {
+    display: inline-flex;
     flex: 0 0 auto;
+    align-items: center;
+    gap: 11px;
     color: var(--ink);
     font-family: var(--serif);
     font-size: 1.2rem;
@@ -150,6 +156,8 @@ p {
     display: inline-flex;
     align-items: center;
     gap: 7px;
+    padding: 9px 13px;
+    border: 1px solid var(--gold);
     color: var(--ink);
 }
 
@@ -159,10 +167,45 @@ p {
     stroke-width: 1.5;
 }
 
-main > section {
+main > section:not(.hero-banner) {
     padding-block: clamp(72px, 9vw, 120px);
     border-bottom: 1px solid var(--line);
     scroll-margin-top: 82px;
+}
+
+.hero-banner {
+    position: relative;
+    display: grid;
+    min-height: clamp(250px, 34vw, 430px);
+    place-items: center;
+    overflow: hidden;
+    background-color: var(--ink);
+    background-image: url("images/hero-banner.jpg");
+    background-position: center 52%;
+    background-size: cover;
+}
+
+.hero-banner::before {
+    position: absolute;
+    inset: 0;
+    background: rgb(18 34 57 / 24%);
+    content: "";
+}
+
+.hero-banner-inner {
+    position: relative;
+    width: 100%;
+    padding: 24px clamp(20px, 6vw, 90px);
+    border-block: 1px solid var(--gold);
+    background: rgb(29 53 87 / 96%);
+    text-align: center;
+}
+
+.hero-banner h1 {
+    color: var(--paper);
+    font-size: clamp(2.2rem, 6.5vw, 5rem);
+    font-weight: 400;
+    letter-spacing: 0.015em;
 }
 
 .hero {
@@ -182,7 +225,7 @@ main > section {
 
 .eyebrow,
 .section-tag {
-    color: var(--accent);
+    color: var(--gold-dark);
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.13em;
@@ -220,7 +263,7 @@ main > section {
     align-items: center;
     gap: 10px;
     border: 0;
-    border-bottom: 1px solid var(--accent);
+    border-bottom: 1px solid var(--gold);
     background: transparent;
     color: var(--accent);
     cursor: pointer;
@@ -230,7 +273,7 @@ main > section {
 }
 
 .text-link:hover {
-    border-color: var(--ink);
+    border-color: var(--gold);
     color: var(--ink);
 }
 
@@ -245,12 +288,28 @@ main > section {
     color: var(--muted);
 }
 
+.hero-actions .text-link:first-child,
+.submit-link {
+    justify-content: center;
+    padding: 10px 16px;
+    border: 1px solid var(--gold);
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.hero-actions .text-link:first-child:hover,
+.submit-link:hover {
+    background: #29476d;
+    color: #ffffff;
+}
+
 .hero-meta {
     display: grid;
     gap: 23px;
     padding: 25px;
-    border: 1px solid var(--line);
-    background: var(--surface);
+    border: 1px solid var(--gold);
+    background: #1d3557;
+    color: #f8f9fa;
     font-style: normal;
 }
 
@@ -267,7 +326,7 @@ main > section {
     width: 16px;
     height: 16px;
     margin-top: 3px;
-    color: var(--accent);
+    color: var(--gold);
     stroke-width: 1.5;
 }
 
@@ -279,7 +338,7 @@ main > section {
 
 .meta-item strong {
     margin-bottom: 3px;
-    color: var(--ink);
+    color: #ffffff;
     font-size: 0.68rem;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -287,12 +346,12 @@ main > section {
 }
 
 .meta-item a {
-    color: var(--muted);
+    color: #f1eee6;
     text-decoration: none;
 }
 
 .meta-item a:hover {
-    color: var(--ink);
+    color: var(--gold);
     text-decoration: underline;
     text-underline-offset: 3px;
 }
@@ -312,7 +371,7 @@ main > section {
 
 .section-tag span {
     padding-inline: 5px;
-    color: #a4a49c;
+    color: var(--gold);
 }
 
 .prose {
@@ -331,6 +390,45 @@ main > section {
     margin-top: 17px;
 }
 
+.image-feature {
+    width: min(100%, 760px);
+    margin: clamp(42px, 6vw, 72px) 0 0 auto;
+    overflow: hidden;
+    border: 1px solid var(--gold-soft);
+    background: var(--surface);
+    box-shadow: 0 8px 24px rgb(29 53 87 / 6%);
+}
+
+.image-feature img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.principles-feature img {
+    aspect-ratio: 4 / 3;
+    object-position: center 43%;
+}
+
+.image-feature-caption {
+    padding: clamp(20px, 3vw, 32px);
+    border-top: 2px solid var(--gold);
+}
+
+.image-feature-caption h3 {
+    margin-bottom: 10px;
+    color: var(--ink);
+    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+}
+
+.image-feature-caption p {
+    max-width: 680px;
+}
+
+.consultation-feature {
+    margin-top: clamp(36px, 5vw, 58px);
+}
+
 .profile-grid {
     display: grid;
     grid-template-columns: minmax(230px, 0.7fr) minmax(0, 1.3fr);
@@ -341,7 +439,7 @@ main > section {
 .profile-img-container img {
     width: 100%;
     aspect-ratio: 4 / 5;
-    border: 1px solid var(--line);
+    border: 1px solid var(--gold-soft);
     object-fit: cover;
 }
 
@@ -361,7 +459,7 @@ main > section {
 
 .profile-role {
     margin-top: 7px;
-    color: var(--accent);
+    color: var(--ink);
     font-size: 0.82rem;
 }
 
@@ -407,13 +505,13 @@ main > section {
 .cred-list li::before {
     position: absolute;
     left: 0;
-    color: var(--accent);
+    color: var(--gold-dark);
     content: "—";
 }
 
 .team-banner-wrapper {
     overflow: hidden;
-    border: 1px solid var(--line);
+    border: 1px solid var(--gold-soft);
     background: var(--surface);
 }
 
@@ -441,7 +539,8 @@ main > section {
     gap: 15px;
     min-width: 0;
     padding: 26px 24px 28px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--gold-soft);
+    border-top: 2px solid var(--gold);
     background: var(--surface);
     box-shadow: 0 5px 16px rgb(32 42 49 / 3%);
 }
@@ -461,7 +560,7 @@ main > section {
     width: 20px;
     height: 20px;
     margin-top: 4px;
-    color: var(--accent);
+    color: var(--gold-dark);
     stroke-width: 1.5;
 }
 
@@ -529,9 +628,9 @@ main > section {
 .contact-form {
     min-width: 0;
     padding: clamp(24px, 4vw, 40px);
-    border: 1px solid var(--line);
-    background: var(--surface);
-    box-shadow: 0 8px 24px rgb(32 42 49 / 4%);
+    border: 1px solid var(--gold);
+    background: #1d3557;
+    box-shadow: 0 8px 24px rgb(29 53 87 / 12%);
 }
 
 .form-group {
@@ -547,13 +646,13 @@ main > section {
 label {
     display: block;
     margin-bottom: 7px;
-    color: var(--ink);
+    color: #f8f9fa;
     font-size: 0.76rem;
     font-weight: 500;
 }
 
 label span {
-    color: var(--muted);
+    color: #d7dfeb;
     font-weight: 400;
 }
 
@@ -563,29 +662,34 @@ textarea {
     width: 100%;
     min-width: 0;
     min-height: 46px;
-    padding: 11px 0;
-    border: 0;
-    border-bottom: 1px solid var(--line);
-    border-radius: 0;
-    background: transparent;
-    color: var(--ink);
+    padding: 11px 12px;
+    border: 1px solid rgb(197 160 89 / 65%);
+    border-radius: 2px;
+    background: rgb(255 255 255 / 5%);
+    color: #ffffff;
     font: 400 0.86rem/1.5 var(--sans);
 }
 
 input::placeholder,
 textarea::placeholder {
-    color: #626967;
+    color: #d7dfeb;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-    border-color: var(--accent);
-    outline: 0;
+    border-color: var(--gold);
+    outline: 2px solid rgb(197 160 89 / 35%);
+    outline-offset: 2px;
 }
 
 select {
     cursor: pointer;
+}
+
+select option {
+    background: #1d3557;
+    color: #ffffff;
 }
 
 textarea {
@@ -595,17 +699,30 @@ textarea {
 
 .submit-link {
     margin-top: 2px;
-    padding: 0 0 7px;
+    min-height: 46px;
+    padding: 10px 16px;
+    border: 1px solid var(--gold);
+    background: var(--gold);
+    color: #1d3557;
+    font-weight: 600;
+}
+
+.submit-link:hover {
+    border-color: #dfc17f;
+    background: #dfc17f;
+    color: #152943;
 }
 
 .site-footer {
-    padding-block: 27px;
+    padding-block: 30px;
+    border-top: 1px solid var(--gold);
 }
 
 .footer-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 18px 28px;
 }
 
@@ -622,7 +739,53 @@ textarea {
 
 .footer-inner p span {
     padding-inline: 5px;
-    color: #a4a49c;
+    color: var(--gold-dark);
+}
+
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.footer-social a {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--ink);
+    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--gold);
+}
+
+.footer-social svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
+}
+
+.footer-social a[aria-label="Facebook"] svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+    stroke: none;
+}
+
+.footer-social .icon-fill {
+    fill: currentColor;
+    stroke: none;
 }
 
 @media (max-width: 800px) {
@@ -646,6 +809,10 @@ textarea {
     .hero-grid {
         grid-template-columns: 1fr;
         gap: 54px;
+    }
+
+    .image-feature {
+        margin-right: auto;
     }
 
     .hero-meta {
@@ -711,6 +878,10 @@ textarea {
         max-width: 360px;
     }
 
+    .image-feature img {
+        aspect-ratio: 4 / 3;
+    }
+
     .credentials-grid {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -766,6 +937,14 @@ textarea {
 @media (max-height: 500px) and (orientation: landscape) {
     .hero {
         padding-block: 48px;
+    }
+
+    .hero-banner {
+        min-height: 190px;
+    }
+
+    .hero-banner-inner {
+        padding-block: 16px;
     }
 
     main > section {
